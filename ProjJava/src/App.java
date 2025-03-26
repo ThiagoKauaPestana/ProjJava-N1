@@ -21,6 +21,7 @@ public class App {
             System.out.println("9. Sair");
 
             // ENTRADA DA OPCAO QUE O USARIO QUER UTILIZAR
+            System.out.print("Digite a Opção: ");
             op = entrada.nextInt();
             
             // SWITCH CASE PARA LER A OPCAO SOLICITADA PELO USUARIO E EXECUTAR O METODO STATIC
