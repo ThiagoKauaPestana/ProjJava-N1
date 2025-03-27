@@ -55,7 +55,7 @@ public class App {
                     break;
                 case 3:
                     if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
-                        System.out.println("Caiu na 3"); // Verificar se um determinado número está contido no vetor
+                        System.out.println("Caiu na 3 teste"); // Verificar se um determinado número está contido no vetor
                     } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
                         System.out.println("caiu na 3 porem nao pode ser usada");
                     }
