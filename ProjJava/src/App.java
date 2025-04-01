@@ -55,7 +55,11 @@ public class App {
                     break;
                 case 3:
                     if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
-                        System.out.println("Caiu na 3"); // Verificar se um determinado número está contido no vetor
+                        int valorProcurado = entrada.nextInt(); // Verificar se um determinado número está contido no vetor
+                        
+                        
+
+                    }
                     } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
                         System.out.println("caiu na 3 porem nao pode ser usada");
                     }
@@ -111,6 +115,15 @@ public class App {
             for(int i = 0; i < vetor.length; i++) {
                 System.out.println(vetor[i] + " ");
             }
+        }
+
+        public static int procurarNum(int vetor[], int num) {
+            for(int i = 0; i < vetor.length; i++) {
+                if(vetor[i] == num){
+                    return i;                    
+                }
+            }
+            return -1;
         }
 }
  
