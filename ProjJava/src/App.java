@@ -42,7 +42,7 @@ public class App {
                     for (int i = 0; i < n; i++) { // Gerando um numero aleatorio para cada posição do vetor
                         vetor[i] = aleatorio.nextInt(m + 1); // Gerando um numero pra posição I garantindo que o intervalo de 0 até o numero M
                     }
-                    System.out.print("Vetor inicializado, liberando as outras opções do Sistema");
+                    System.out.println("Vetor inicializado, liberando as outras opções do Sistema");
                     VerficaVetor = true; // MUDANDO A VARIAVEL BOLEANA PARA TRUE, ASSIM OS OUTROS CASOS PODEM SER EXECUTADOS
                     break;
                     
@@ -50,16 +50,22 @@ public class App {
                     if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
                         printar(vetor);
                     } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
-                        System.out.println("caiu na 2 porem nao pode ser usada");
+                        System.out.println("Inicialize o Vetor antes de usar essa função");
                     }
                     break;
                 case 3:
                     if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
                         int valorProcurado = entrada.nextInt(); // Verificar se um determinado número está contido no vetor
-                        
+                        int indice = procurarNum(vetor, valorProcurado);
+
+                        if (indice == -1) { // Verificando se o valor que a função retornou e igual a menos 1
+                            System.out.println("Valor nao esta no vetor"); 
+                        } else { //Nao e igual a menos 1 entao exibe o indice 
+                            System.out.printf("Indice #%d/n", indice);
+                        }
                         
 
-                    }
+                    
                     } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
                         System.out.println("caiu na 3 porem nao pode ser usada");
                     }
