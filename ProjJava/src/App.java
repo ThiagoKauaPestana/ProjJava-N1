@@ -55,40 +55,43 @@ public class App {
                     break;
                 case 3:
                     if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
+                        System.out.print("Digite qual numero quer procurar no Vetor: ");
                         int valorProcurado = entrada.nextInt(); // Verificar se um determinado número está contido no vetor
                         int indice = procurarNum(vetor, valorProcurado);
 
                         if (indice == -1) { // Verificando se o valor que a função retornou e igual a menos 1
                             System.out.println("Valor nao esta no vetor"); 
                         } else { //Nao e igual a menos 1 entao exibe o indice 
-                            System.out.printf("Indice #%d/n", indice);
+                            System.out.printf("O maior numero esta contido no indice #%d\n", indice);
                         }
                         
-
-                    
                     } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
-                        System.out.println("caiu na 3 porem nao pode ser usada");
+                        System.out.println("Inicialize o Vetor antes de usar essa função");
                     }
                     break;
                 case 4:
                     if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
-                        System.out.println("Caiu na 4"); // Buscar o maior número armazenado no vetor
+                        int verificaMaior = procuraMaior(vetor); // Verifica e procura maior numero do vetor
+                        System.out.printf("O maior numero contido no vetor e: %d\n", verificaMaior); 
+
                     } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
-                        System.out.println("caiu na 4 porem nao pode ser usada");
+                        System.out.println("Inicialize o Vetor antes de usar essa função");
                     }
                     break;
                 case 5:
                     if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
-                        System.out.println("Caiu na 5"); // Calcular a média dos números pares armazenados no vetor
+                        int media = calculaMedia(vetor); // Calcular a média dos números pares armazenados no vetor
+                        System.out.printf("A media dos numeros pares e: %d\n", media);
                     } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
-                        System.out.println("caiu na 5 porem nao pode ser usada");
+                        System.out.println("Inicialize o Vetor antes de usar essa função");
                     }
                     break;
                 case 6:
                     if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
-                        System.out.println("Caiu na 6"); // Calcular o percentual dos números ímpares armazenados no vetor
+                        double percentual = calculaPercentualImpar(vetor); // Calcular o percentual dos números ímpares armazenados no vetor
+                        System.out.printf("Percentual de ímpares: %.1f%%\n", percentual);
                     } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
-                        System.out.println("caiu na 6 porem nao pode ser usada");
+                        System.out.println("Inicialize o Vetor antes de usar essa função");
                     }
                     break;
                     
@@ -96,14 +99,14 @@ public class App {
                     if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
                         System.out.println("Caiu na 7"); // Calcula a média centralizada dos números armazenados no vetor
                         } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
-                            System.out.println("caiu na 7 porem nao pode ser usada");
+                            System.out.println("Inicialize o Vetor antes de usar essa função");
                         }
                         break;
                     case 8:
                         if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
                             System.out.println("Caiu na 8"); // Verificar se dado um valor existe dois números em posições distintas que somados são iguais ao valor informado.
                         } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
-                            System.out.println("caiu na 8 porem nao pode ser usada");
+                            System.out.println("Inicialize o Vetor antes de usar essa função");
                         }
                         break;
                     case 9:
@@ -117,13 +120,13 @@ public class App {
                 
             entrada.close();
         }
-        public static void printar(int vetor[]) {
+        public static void printar(int vetor[]) { // Funcao printar vetor
             for(int i = 0; i < vetor.length; i++) {
-                System.out.println(vetor[i] + " ");
+                System.out.println(vetor[i]);
             }
         }
 
-        public static int procurarNum(int vetor[], int num) {
+        public static int procurarNum(int vetor[], int num) { // Funcao procurar numero contido no vetor
             for(int i = 0; i < vetor.length; i++) {
                 if(vetor[i] == num){
                     return i;                    
@@ -131,5 +134,46 @@ public class App {
             }
             return -1;
         }
+
+        public static int procuraMaior(int vetor[]) { // Funcao procurar maior numero do vetor
+            int numMaior = vetor[0]; // Inicializando a variavel que vai contar o maior numero
+            for(int i = 0; i < vetor.length; i++) {          
+                if(vetor[i] > numMaior) { // Verificando se o indice i e maior que o numero maior que contem Guardado na variavel
+                    numMaior = vetor[i]; // se maior guardar o indice i no numero maior
+                }
+            }
+            return numMaior;
+        }
+
+        public static int calculaMedia(int vetor[]) { // Calcula media dos numeros pares
+            int soma = 0;
+            int qtdNumPar = 0;
+            for(int i = 0; i < vetor.length; i++){
+                if(vetor[i] % 2 == 0)
+                soma += vetor[i];
+                qtdNumPar++;
+            }
+            
+            int media = soma / qtdNumPar;
+            return media;
+        }
+
+        public static double calculaPercentualImpar(int vetor[]) {
+            if (vetor.length == 0) {
+                return 0; // evita divisão por zero
+            }
+
+            int qtdNumImpar = 0;
+            
+            for(int i = 0; i < vetor.length; i++){
+                if (vetor[i] % 2 != 0){
+                    qtdNumImpar++;
+                }
+            }
+            double percentual = qtdNumImpar * 100.0 / vetor.length;
+            return percentual;
+        }
+
+
 }
  
