@@ -4,6 +4,9 @@ import java.util.Random; // Import da função que cria um vetor aleatorio
 public class App {
 
     
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         
         Scanner entrada = new Scanner(System.in); // Declaração Scanner
@@ -97,22 +100,33 @@ public class App {
                     
                 case 7:
                     if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
-                        System.out.println("Caiu na 7"); // Calcula a média centralizada dos números armazenados no vetor
-                        } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
-                            System.out.println("Inicialize o Vetor antes de usar essa função");
+                        double mediaCentralizada = calculaMediaCentralizada(vetor);
+                        if (mediaCentralizada != -1){
+                            System.out.printf("A média centralizada dos números é: %.2f\n", mediaCentralizada);                            
                         }
-                        break;
+                    } else{
+                        System.out.println("Inicialize o Vetor antes de usar essa função");
+                    }   
+                    break;
                     case 8:
-                        if (VerficaVetor) { // VERIFICACAO SE O VETOR JA FOI CRIADO, SO E EXECUTADA SE A VARIAVEL SER TRUE
-                            System.out.println("Caiu na 8"); // Verificar se dado um valor existe dois números em posições distintas que somados são iguais ao valor informado.
-                        } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
+                        if (VerficaVetor) {
+                            System.out.print("Digite o valor a ser somado: ");
+                            int valorSoma = entrada.nextInt(); // Solicitar o valor que o usuário quer testar
+                            boolean existeSoma = verificaSoma(vetor, valorSoma);
+                            
+                            if (existeSoma) {
+                                System.out.println("Existem dois números no vetor cuja soma é igual ao valor informado.");
+                            } else {
+                                System.out.println("Não existem dois números no vetor cuja soma é igual ao valor informado.");
+                            }
+                        } else {
                             System.out.println("Inicialize o Vetor antes de usar essa função");
-                        }
+                        } 
                         break;
                     case 9:
                         System.out.println("Caiu na 9 SAIRRR"); // SAIR
                         break;
-                        default:
+                    default:
                         System.out.println("Opção inválida, tente novamente.");
                 }
                 // CONTINUA NO LACO SE FOR DIFERENTE DE 9
@@ -173,7 +187,45 @@ public class App {
             double percentual = qtdNumImpar * 100.0 / vetor.length;
             return percentual;
         }
-
-
+        public static double calculaMediaCentralizada(int vetor[]) {
+            if (vetor.length <= 2) { // Se houver 2 ou menos elementos, não podemos calcular a média centralizada
+                System.out.println("Não é possível calcular a média centralizada, vetor precisa ter mais que 2 elementos.");
+                return -1;
+            }
+            
+            int maior = vetor[0];
+            int menor = vetor[0];
+            int soma = 0;
+            int contador = 0;
+        
+            // Encontrando o maior e o menor valor
+            for (int i = 0; i < vetor.length; i++) {
+                if (vetor[i] > maior) {
+                    maior = vetor[i];
+                }
+                if (vetor[i] < menor) {
+                    menor = vetor[i];
+                }
+            }
+            // Calculando a soma dos elementos ignorando o maior e o menor
+            for (int i = 0; i < vetor.length; i++) {
+                if (vetor[i] != maior && vetor[i] != menor) {
+                    soma += vetor[i];
+                    contador++;
+                }
+            }
+            // Calcular a média centralizada
+            return (double) soma / contador;
+        }
+        public static boolean verificaSoma(int vetor[], int valor) {
+            for (int i = 0; i < vetor.length; i++) {
+                for (int j = i + 1; j < vetor.length; j++) { // O segundo loop começa de i+1 para evitar repetir o mesmo número
+                    if (vetor[i] + vetor[j] == valor) {
+                        return true; // Se encontrar dois números que somam o valor, retorna true
+                    }
+                }
+            }
+            return false; // Se não encontrar, retorna false
+        }                    
 }
  
