@@ -62,7 +62,7 @@ public class App {
                         if (indice == -1) { // Verificando se o valor que a função retornou e igual a menos 1
                             System.out.println("Valor nao esta no vetor"); 
                         } else { //Nao e igual a menos 1 entao exibe o indice 
-                            System.out.printf("O maior numero esta contido no indice #%d\n", indice);
+                            System.out.printf("O numero esta contido no indice #%d\n", indice);
                         }
                         
                     } else { // CASO VERIFICACAO SER FALSE EXECUTAR ELSE
