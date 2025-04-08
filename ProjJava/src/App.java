@@ -4,9 +4,6 @@ import java.util.Random; // Import da função que cria um vetor aleatorio
 public class App {
 
     
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
         
         Scanner entrada = new Scanner(System.in); // Declaração Scanner
@@ -198,8 +195,8 @@ public class App {
             int soma = 0;
             int contador = 0;
         
-            // Encontrando o maior e o menor valor
-            for (int i = 0; i < vetor.length; i++) {
+           
+            for (int i = 0; i < vetor.length; i++) { // Encontrando o maior e o menor valor
                 if (vetor[i] > maior) {
                     maior = vetor[i];
                 }
@@ -207,8 +204,8 @@ public class App {
                     menor = vetor[i];
                 }
             }
-            // Calculando a soma dos elementos ignorando o maior e o menor
-            for (int i = 0; i < vetor.length; i++) {
+            
+            for (int i = 0; i < vetor.length; i++) { // Calculando a soma dos elementos ignorando o maior e o menor
                 if (vetor[i] != maior && vetor[i] != menor) {
                     soma += vetor[i];
                     contador++;
